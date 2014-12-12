@@ -27,3 +27,10 @@ Our plan is to use the Arduino Uno as the processor core driving the robot’s m
 
 ### Risk and Feasibility
 The motion detector could detect ambient motion. The robot could be destroyed by dog.
+
+### Technical Specifications
+Our code is split up into several logical units.
+__main.py__ contains the main run loop of our application and manages the state of the robot.
+__vision.py__ contains our algorithm dog detection. It contains a continuous run loop that access the camera feed of the Microsoft Kinect.
+__servo.py__ contains all the utilites necessary to operate the various rotation servos that we plan to use.
+__switch.py__ contains all the utilities necessary to operate the switch that we plan to use for ball detection.
