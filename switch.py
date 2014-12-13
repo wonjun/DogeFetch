@@ -17,8 +17,6 @@ class Switch:
     def poll(self):
         while True:
             time.sleep(POLL_FREQUENCY)
-            # actually poll switch
+            # TODO actually poll switch
             val = False
             self.callback(self, val)
-
-
