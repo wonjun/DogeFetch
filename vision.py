@@ -23,7 +23,7 @@ def find_largest_contour(cap, showCamera=False):
       cv2.rectangle(im,(x,y),(x+w,y+h),(0,255,0),2)
 
     if showCamera:
-        cv2.imshow("images", np.vstack([im, output]))
+        cv2.imshow("images", np.hstack([im, output]))
 
     return bounding_rect
 
