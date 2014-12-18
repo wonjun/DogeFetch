@@ -1,10 +1,11 @@
 import cv2
 import numpy as np
 import time
-from threading import Thread 
+from threading import Thread
 
 POLL_FREQUENCY = .05
 DOG_THRESHOLD = [1, 1, 300, 200]
+MIN_AREA = 300
 
 
 class Detector:
@@ -13,7 +14,7 @@ class Detector:
         self.callback = callback
         self.showCamera = showCamera
         self.start()
-    
+
     def start(self):
         self.thread = Thread(target=self.run, args=())
         self.thread.start()
@@ -34,7 +35,7 @@ class Detector:
     def get_size(self, rect):
         return rect[2] * rect[3]
 
-    def find_largest_contour(self):
+    def find_dog_contour(self):
         _, im = self.camera.read()
         COLOR_MIN = np.array([127, 127, 127],np.uint8)
         COLOR_MAX = np.array([255, 255, 255],np.uint8)
@@ -45,13 +46,14 @@ class Detector:
 
         bounding_rect = None
         if len(contours) > 0:
-            areas = [cv2.contourArea(c) for c in contours]
-            max_index = np.argmax(areas)
-            cnt=contours[max_index]
+            areas = [cv2.contourArea(c) for c in contours if cv2.contourArea(c) > MIN_AREA]
+            if len(areas) > 0:
+                max_index = np.argmax(areas)
+                cnt=contours[max_index]
 
-            bounding_rect = cv2.boundingRect(cnt)
-            x,y,w,h = bounding_rect
-            cv2.rectangle(im,(x,y),(x+w,y+h),(0,255,0),2)
+                bounding_rect = cv2.boundingRect(cnt)
+                x,y,w,h = bounding_rect
+                cv2.rectangle(im,(x,y),(x+w,y+h),(0,255,0),2)
         # cv2.imshow('vid stream', im)
         key = cv2.waitKey(10)
         if key == 27:
