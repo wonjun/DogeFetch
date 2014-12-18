@@ -7,10 +7,10 @@ EECS 149/249A Project Charter, Fall 2014
 This project will create an automated dog toy that keeps a dog entertained on its own by throwing balls in the opposite direction of the dog.
 
 ### Project Approach
-The project will use a state machine governed by two main sensor inputs - a sensor for detecting whether a tennis ball has been inserted and a sensor for detecting the position of the dog relative to the robot. The goal will be to detect the insertion of a ball, detect the location of the dog, and throw the ball in the opposite direction of the dog. It would remain inert until the next tennis ball insertion.
+The project will use a state machine governed by two main sensor inputs - a sensor for detecting whether a ball has been inserted and a sensor for detecting the position of the dog relative to the robot. The goal will be to detect the insertion of a ball, detect the location of the dog, and throw the ball in the opposite direction of the dog. It would remain inert until the next ball insertion.
 
 ### Resources
-Our plan is to use the Arduino Uno as the processor core driving the robot’s movements. We will plan on using this to interface with a [Vernier Sensor Motion Detector](https://www.sparkfun.com/products/12875) that will be able to detect the movement and position of the dog. For detecting the insertion of the tennis ball, we plan on using a [Flexiforce Pressure Sensor](https://www.sparkfun.com/products/12875 ) to detect the weight of the inserted ball. The launching device will be able to rotate using a [Digital Continuous Rotation Servo](https://www.sparkfun.com/products/12875 ) that will rotate to the opposite direction of the dog, at which point a switch will activate the launch of the ball.
+We used a Raspberry Pi as the processor core driving the robot. We interfaced with a Microsoft Kinect to detect the position of the dog. For detecting the insertion of the tennis ball, we used a microswitch to detect the weight of the inserted ball. The launching device will be able to rotate using a [Digital Continuous Rotation Servo](https://www.sparkfun.com/products/12875 ) that will rotate to the opposite direction of the dog, at which point a switch will activate the launch of the ball.
 
 ### Schedule
 * October 21: Project charter due
